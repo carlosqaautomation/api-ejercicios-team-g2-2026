@@ -1,0 +1,28 @@
+{
+  "loginResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "user": {
+        "id": "#string",
+        "email": "#regex ^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+        "fullName": "#string",
+        "phone": "#null"
+      },
+      "accessToken": "#regex ^eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\\..+",
+      "refreshToken": "#regex ^eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\\..+"
+    }
+  },
+  "beneficiarioResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#string",
+      "name": "#string",
+      "accountNumber": "#regex ^\\d{10,}$",
+      "bankName": "#string",
+      "relationship": "#string",
+      "userId": "#string",
+      "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "isActive": "#boolean"
+    }
+  }
+}
