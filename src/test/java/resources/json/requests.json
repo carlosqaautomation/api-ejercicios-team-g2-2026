@@ -1,0 +1,6 @@
+{
+  "loginRequest": {
+    "email": "#(user)",
+    "password": "#(password)"
+  }
+}
