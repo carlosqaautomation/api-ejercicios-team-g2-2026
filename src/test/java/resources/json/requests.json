@@ -2,5 +2,11 @@
   "loginRequest": {
     "email": "#(user)",
     "password": "#(password)"
+  },
+
+  "accountCreationRequest":{
+    "accountType": "#(type)",
+    "currency": "#(currency)",
+    "initialBalance": "#(balance)"
   }
 }
