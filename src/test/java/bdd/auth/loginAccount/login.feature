@@ -16,4 +16,4 @@ Feature: Casos de prueba login
 
     Examples:
       |user|password|
-      | carlosqa@bankapi.com | password123 |
+      | ricardo@bankapi.com | password123 |

@@ -1,0 +1,63 @@
+{
+  "accountsResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#string",
+      "userId": "#string",
+      "accountNumber": "#regex ^\\d{10,}$",
+      "accountType": "#string",
+      "balance": "#number",
+      "currency": "#string",
+      "isActive": "#boolean",
+      "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "ListAccountsResponseSchema": {
+    "success": "#boolean",
+    "data": [
+      {
+        "id": "#uuid",
+        "userId": "#uuid",
+        "accountNumber": "#regex ^\\d{10}$",
+        "accountType": "#string",
+        "balance": "#number",
+        "currency": "#string",
+        "isActive": "#boolean",
+        "createdAt": "#string",
+        "updatedAt": "#string"
+      }
+    ]
+  },
+  "getAccountResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#uuid",
+      "userId": "#uuid",
+      "accountNumber": "#regex ^\\d{10}$",
+      "accountType": "#string",
+      "balance": "#number",
+      "currency": "#string",
+      "isActive": "#boolean",
+      "createdAt": "#string",
+      "updatedAt": "#string"
+    }
+  },
+  "getAccountNotFoundSchema": {
+    "success": "#boolean",
+    "error": {
+      "code": "#string",
+      "message": "#string"
+    }
+  },
+  "getAccountBalanceSchema": {
+    "success": "#boolean",
+    "data": {
+      "accountId": "#uuid",
+      "accountNumber": "#regex ^\\d{10}$",
+      "balance": "#number",
+      "currency": "#string",
+      "availableBalance": "#number",
+      "ledgerBalance": "#number"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "loginRequest": {
+    "email": "#(user)",
+    "password": "#(password)"
+  },
+  "accountCreationRequest": {
+    "accountType": "#(type)",
+    "currency": "#(currency)",
+    "initialBalance": "#(parseInt(balance))"
+  },
+  "getAccountRequest": {
+    "id": "#(accountId)"
+  }
+}
