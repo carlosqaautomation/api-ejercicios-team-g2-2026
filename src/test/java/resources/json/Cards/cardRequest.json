@@ -1,0 +1,19 @@
+{
+  "loginRequest": {
+    "email": "#(user)",
+    "password": "#(password)"
+  },
+  "createAccountRequest": {
+    "accountType": "#(accountType)",
+    "currency": "#(currency)",
+    "initialBalance": "#(parseInt(initialBalance))"
+  },
+  "createCardRequest": {
+    "accountId": "#(idAccount)",
+    "cardType": "#(cardType)",
+    "cardHolderName": "#(cardHolderName)"
+  },
+  "addFoundsRequest": {
+    "amount": "#(amount)"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "loginResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "user": {
+        "id": "#string",
+        "email": "#regex ^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$",
+        "fullName": "#string",
+        "phone": "#null"
+      },
+      "accessToken": "#regex ^eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\\..+",
+      "refreshToken": "#regex ^eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\\..+"
+    }
+  },
+  "beneficiarioResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#string",
+      "name": "#string",
+      "accountNumber": "#regex ^\\d{10,}$",
+      "bankName": "#string",
+      "relationship": "#string",
+      "userId": "#string",
+      "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$",
+      "isActive": "#boolean"
+    }
+  },
+  "accountsResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#string",
+      "userId": "#string",
+      "accountNumber": "#regex ^\\d{10,}$",
+      "accountType": "#string",
+      "balance": "#number",
+      "currency": "#string",
+      "isActive": "#boolean",
+      "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "cardResponseSchema": {
+    "success": "#boolean",
+    "data": {
+      "id": "#string",
+      "userId": "#string",
+      "accountId": "#string",
+      "cardNumber": "#regex ^\\d{16}$",
+      "cardType": "#string",
+      "cvv": "#regex ^\\d{3}$",
+      "expiryDate": "#regex ^\\d{2}/\\d{2}$",
+      "cardHolderName": "#string",
+      "isActive": "#boolean",
+      "dailyLimit": "#number",
+      "dailySpent": "#number",
+      "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+    }
+  },
+  "ListAccountsResponseSchema": {
+    "success": "#boolean",
+    "data": [
+      {
+        "id": "#uuid",
+        "userId": "#uuid",
+        "accountNumber": "#regex ^\\d{10}$",
+        "accountType": "#string",
+        "balance": "#number",
+        "currency": "#string",
+        "isActive": "#boolean",
+        "createdAt": "#string",
+        "updatedAt": "#string"
+      }
+    ]
+  },
+  "AddFundsResponseSchema":{
+    "success": "#boolean",
+          "data": {
+            "cardId": "#uuid",
+            "amount": "#number",
+            "newBalance": "##number",
+            "transactionId": "#uuid"
+          }
+
+  },
+  "TransactionItemSchema": {
+                  "id": "#uuid",
+                  "cardId": "#uuid",
+                  "transactionType": "#string",
+                  "amount": "#number",
+                  "description": "#string",
+                  "status": "#string",
+                  "createdAt": "#regex ^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"
+      },
+  "TransaccionCardsResponseSchema": {
+    "success": "#boolean",
+    "data": "#[] schemas.TransactionItemSchema"
+  }
+
+}

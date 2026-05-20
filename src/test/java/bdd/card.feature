@@ -6,8 +6,8 @@ Feature: Casos de prueba tarjeta
     * print reusableToken
     * def tokenLogin = reusableToken.token
     * url "https://bankapi-n1t8.onrender.com"
-    * def requests = read('classpath:resources/json/requests.json')
-    * def schemas = read('classpath:resources/json/schemas.json')
+    * def requests = read('classpath:resources/json/Cards/cardRequest.json')
+    * def schemas = read('classpath:resources/json/Cards/cardSchemas.json')
 
   @crearCuenta
   Scenario Outline: CP01-Crear cuenta
@@ -19,7 +19,7 @@ Feature: Casos de prueba tarjeta
     Then status 201
     And match response.data.id == '#notnull'
     And match response.data.userId == '#notnull'
-    And match response == schemas.cuentaResponseSchema
+    And match response == schemas.accountsResponseSchema
     * def idAccount = response.data.id
     * print idAccount
 
@@ -38,7 +38,7 @@ Feature: Casos de prueba tarjeta
     Then status 201
     And match response.data.id == '#notnull'
     And match response.data.accountId == ctaTarjeta
-    And match response == schemas.tarjetaResponseSchema
+    And match response == schemas.cardResponseSchema
     * def id = response.data.id
         * print id
 
@@ -50,8 +50,6 @@ Feature: Casos de prueba tarjeta
     * def reusaId = call read('@crearTarjeta')
     * print 'Contenido de reusableId:', reusaId
     * def idTarjeta = reusaId.id
-    * def requests = read('classpath:resources/json/requests.json')
-    * def schemas = read('classpath:resources/json/schemas.json')
     Given path 'api/cards/' + idTarjeta
     And header Authorization = 'Bearer ' + tokenLogin
     When method get
@@ -64,6 +62,55 @@ Feature: Casos de prueba tarjeta
     And header Authorization = 'Bearer ' + tokenLogin
     When method get
     Then status 200
+
+
+  @añadirFondos
+  Scenario: CP05-Añadir fondos a tarjeta
+    * def reusaId = call read('@crearTarjeta')
+    * print 'Contenido de reusable:', reusaId
+    * def idTarjeta = reusaId.id
+    * def requests = read('classpath:resources/json/Cards/cardRequest.json')
+    * def schemas = read('classpath:resources/json/Cards/cardSchemas.json')
+    Given path 'api/cards/' + idTarjeta + '/add-funds'
+    And header Authorization = 'Bearer ' + tokenLogin
+    And request { amount: 200 }
+    When method post
+    Then status 200
+    And match response.data.cardId == '#notnull'
+    And match response == schemas.AddFundsResponseSchema
+    * def cardId = response.data.cardId
+    * print cardId
+
+  @transaccionesTarjeta
+  Scenario: CP06-Transacciones de tarjeta
+    * def cardsId = call read('@añadirFondos')
+    * print 'Contenido de reusable:', cardsId
+    * def idTarjetaTransaccion = cardsId.cardId
+    * print idTarjetaTransaccion
+    Given path 'api/cards/' + idTarjetaTransaccion + '/transactions'
+    And header Authorization = 'Bearer ' + tokenLogin
+    When method get
+    Then status 200
+    And match response.data[0].id == '#notnull'
+    And match response == schemas.TransaccionCardsResponseSchema
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
