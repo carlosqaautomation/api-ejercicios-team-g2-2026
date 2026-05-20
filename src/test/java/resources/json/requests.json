@@ -3,10 +3,14 @@
     "email": "#(user)",
     "password": "#(password)"
   },
-
-  "accountCreationRequest":{
-    "accountType": "#(type)",
+  "createAccountRequest": {
+    "accountType": "#(accountType)",
     "currency": "#(currency)",
-    "initialBalance": "#(balance)"
+    "initialBalance": "#(parseInt(initialBalance))"
+  },
+  "createCardRequest": {
+    "accountId": "#(idAccount)",
+    "cardType": "#(cardType)",
+    "cardHolderName": "#(cardHolderName)"
   }
 }
