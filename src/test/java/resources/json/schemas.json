@@ -70,5 +70,22 @@
         "updatedAt": "#string"
       }
     ]
+  },
+  "paymentResponseListarObjetos": {
+    "success": "#boolean",
+    "data": "#[10]"
+  },
+  "paymentResponseListar":{
+    "id": "#string",
+    "name": "#string",
+    "category": "#string",
+    "processingFee": "#number"
+  },
+  "paymentErrorUnauthorized": {
+    "success": false,
+    "error": {
+      "code": "#string",
+      "message": "#string"
+    }
   }
 }
