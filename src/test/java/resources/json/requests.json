@@ -12,5 +12,11 @@
     "accountId": "#(idAccount)",
     "cardType": "#(cardType)",
     "cardHolderName": "#(cardHolderName)"
+  },
+  "pagarServicioRequest": {
+    "accountId": "#(accountId)",
+    "serviceId": "#(serviceId)",
+    "amount": "#(amount)",
+    "reference": "#(reference)"
   }
 }

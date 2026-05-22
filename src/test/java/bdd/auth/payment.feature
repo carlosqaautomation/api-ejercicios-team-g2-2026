@@ -21,7 +21,7 @@ Feature: Payments
       * assert ids.length == uniqueIds.length
 
     @listarServicios @unauthorized
-    Scenario: C003 - Sin header Authorization retorna 401
+    Scenario: C002 - Sin header Authorization retorna 401
       * def schemas = read('classpath:resources/json/schemas.json')
       * header Authorization = null
       Given path 'api','payments','services'
@@ -32,3 +32,14 @@ Feature: Payments
       And match response.error.code == 'UNAUTHORIZED'
       And match response.error.message == 'No token provided'
       And match response.data == '#notpresent'
+
+      @pagarServicio @success
+    Scenario Outline: C003 - Pagar servicio con éxito
+        * def requests = read('classpath:resources/json/requests.json')
+        Given path 'api','payments'
+        And request requests.pagarServicioRequest
+        When method post
+        Then status 201
+
+        Examples:
+          | read('classpath:resources/csv/auth/payment.csv') |
