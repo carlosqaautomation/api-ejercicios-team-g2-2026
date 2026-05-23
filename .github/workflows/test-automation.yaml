@@ -1,0 +1,14 @@
+name: Pruebas de Automatización
+
+on:
+  push:
+    branches:
+      - feature/transferencia
+
+jobs:
+  prueba:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Imprimir consola
+        run: echo 'Este es mi primer workflow de pruebas de automatización'
