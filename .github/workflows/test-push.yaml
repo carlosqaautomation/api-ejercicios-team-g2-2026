@@ -1,4 +1,11 @@
 name: Pruebas Automaticas
+#Pasos:
+#1. clonar el repositorio
+#2. descargar herramientas necesarias
+#2.1 configurar el java y maven
+#3. descargar dependencias del proyecto
+#4. ejecutar pruebas
+#5. generar reporte de pruebas
 
 on:
   push:
@@ -9,13 +16,6 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      #Pasos:
-      #1. clonar el repositorio
-      #2. descargar herramientas necesarias
-      #2.1 configurar el java y maven
-      #3. descargar dependencias del proyecto
-      #4. ejecutar pruebas
-      #5. generar reporte de pruebas
       - name: Clonar repositorio
         uses: actions/checkout@v6
       - name: Configurar Java y Maven
@@ -28,3 +28,6 @@ jobs:
       - name: Generar reporte de pruebas
         if: always()
         uses: actions/upload-artifact@v7
+        with:
+          name: Reporte de Pruebas
+          path: target/karate-reports/
