@@ -1,4 +1,4 @@
-name: Pruebas de Automatización
+name: Ejemplo de workflow
 
 on:
   push:

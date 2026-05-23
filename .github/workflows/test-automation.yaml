@@ -1,11 +1,2 @@
-name: Pruebas de Automatización
 
-on:
-  push:
-    branches:
-      - feature/transferencia
-
-jobs:
-  prueba:
-    runs-on: ubuntu-latest
 

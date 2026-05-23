@@ -26,4 +26,5 @@ jobs:
       - name: Descarga dependencias y ejecuta pruebas
         run: mvn clean verify
       - name: Generar reporte de pruebas
+        if: always()
         uses: actions/upload-artifact@v7
